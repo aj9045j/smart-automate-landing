@@ -1,55 +1,89 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const faqs = [
+const faqCategories = [
   {
-    question: "What types of businesses do you work with?",
-    answer: "We work with businesses of all sizes across various industries. Our automation solutions are particularly valuable for companies with repetitive tasks, data processing needs, or customer service operations that could benefit from AI enhancement."
+    title: "Chatbot Services",
+    questions: [
+      {
+        question: "What are AI chatbots, and how can they enhance customer interactions?",
+        answer: "AI chatbots are intelligent software applications that use natural language processing to engage with customers in real-time. They enhance customer interactions by providing 24/7 support, instant responses, and consistent service quality while handling multiple conversations simultaneously."
+      },
+      {
+        question: "Can I integrate a chatbot with my existing website or app?",
+        answer: "Yes, our chatbots are designed to seamlessly integrate with various platforms including websites, mobile apps, and messaging platforms. We provide custom integration solutions that work with your existing technology stack."
+      },
+      {
+        question: "How do AI chatbots improve customer service?",
+        answer: "AI chatbots improve customer service by providing instant responses, handling routine inquiries, collecting customer data, and escalating complex issues to human agents when needed. This results in faster response times, reduced wait times, and improved customer satisfaction."
+      }
+    ]
   },
   {
-    question: "How long does implementation typically take?",
-    answer: "Implementation time varies based on the complexity of your automation needs. Simple automations can be implemented within 1-2 weeks, while more complex systems might take 4-8 weeks. We'll provide a detailed timeline during your strategy call."
+    title: "Business Process Automation",
+    questions: [
+      {
+        question: "What is business process automation, and how does it work?",
+        answer: "Business process automation uses technology to execute recurring tasks or processes automatically. It works by analyzing your existing workflows, identifying repetitive tasks, and implementing software solutions that can perform these tasks with minimal human intervention."
+      },
+      {
+        question: "What types of tasks can be automated?",
+        answer: "Many business tasks can be automated, including data entry, document processing, email responses, scheduling, inventory management, invoice processing, report generation, and social media management. We analyze your specific needs to identify the best automation opportunities."
+      },
+      {
+        question: "Will automation require significant changes to my current processes?",
+        answer: "Not necessarily. Our automation solutions are designed to integrate with your existing processes and can be implemented gradually. We work closely with your team to ensure a smooth transition with minimal disruption to your operations."
+      }
+    ]
   },
   {
-    question: "What's included in the free strategy call?",
-    answer: "During the free strategy call, we'll discuss your current business processes, identify automation opportunities, and outline potential solutions. You'll receive a high-level roadmap and estimated ROI for implementing our recommended automations."
-  },
-  {
-    question: "How do you ensure security and privacy?",
-    answer: "We implement industry-standard security protocols and follow best practices for data protection. All data is encrypted, and we sign comprehensive NDAs. We also provide detailed documentation of our security measures."
-  },
-  {
-    question: "What's your pricing structure?",
-    answer: "Our pricing is based on the complexity and scope of your automation needs. We offer flexible packages starting from basic automation setups to comprehensive enterprise solutions. We'll provide detailed pricing during your strategy call."
-  },
-  {
-    question: "How do you handle maintenance and updates?",
-    answer: "We provide ongoing maintenance and regular updates as part of our service. This includes monitoring system performance, implementing improvements, and adapting to changes in your business processes or integrated technologies."
+    title: "AI-Powered Tools",
+    questions: [
+      {
+        question: "What AI tools are included in your services?",
+        answer: "Our services include a comprehensive suite of AI tools such as natural language processing, machine learning algorithms, computer vision, predictive analytics, and automated decision-making systems. The specific tools are customized based on your business needs."
+      },
+      {
+        question: "How do AI tools optimize operations?",
+        answer: "AI tools optimize operations by analyzing data patterns, automating complex decisions, predicting trends, identifying inefficiencies, and providing actionable insights. This leads to improved accuracy, faster processing times, and better resource allocation."
+      },
+      {
+        question: "Are the AI-powered tools customizable?",
+        answer: "Yes, all our AI tools are highly customizable to meet your specific business requirements. We work with you to understand your needs and configure the tools accordingly, ensuring they align perfectly with your business objectives and workflows."
+      }
+    ]
   }
 ];
 
 export const FAQ = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white" id="faq">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-primary mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-gray-600">
-            Everything you need to know about our AI automation services
+            Find answers to common questions about our services
           </p>
         </div>
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <div className="max-w-4xl mx-auto">
+          {faqCategories.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="mb-12">
+              <h3 className="text-2xl font-semibold text-primary mb-6">
+                {category.title}
+              </h3>
+              <Accordion type="single" collapsible className="w-full">
+                {category.questions.map((faq, index) => (
+                  <AccordionItem key={index} value={`${categoryIndex}-${index}`}>
+                    <AccordionTrigger className="text-left">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent>{faq.answer}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          ))}
         </div>
       </div>
     </section>
