@@ -1,89 +1,77 @@
-import { Bot, Brain, Cpu, MessageSquare, Workflow, Sparkles, Code2, Image, Palette, PenTool, Mic, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { google, telegram, database, slack, discord } from "lucide-react";
 
 const technologies = [
   {
-    name: "ChatGPT",
-    icon: MessageSquare,
-    description: "Advanced language model for natural conversations",
+    name: "Google Sheets",
+    icon: google,
+    description: "Connect and automate your spreadsheet workflows"
   },
   {
-    name: "OpenAI",
-    icon: Brain,
-    description: "Leading AI research and deployment platform",
+    name: "Telegram",
+    icon: telegram,
+    description: "Build automated messaging and notification systems"
   },
   {
-    name: "Gemini",
-    icon: Sparkles,
-    description: "Google's advanced multimodal AI model",
+    name: "MySQL",
+    icon: database,
+    description: "Integrate with your MySQL databases seamlessly"
   },
   {
-    name: "Claude",
-    icon: Bot,
-    description: "Anthropic's AI assistant for complex tasks",
+    name: "Slack",
+    icon: slack,
+    description: "Automate your team communications and workflows"
   },
   {
-    name: "N8N",
-    icon: Workflow,
-    description: "Powerful workflow automation platform",
+    name: "Discord",
+    icon: discord,
+    description: "Create powerful Discord bot integrations"
   },
   {
-    name: "Make.com",
-    icon: Cpu,
-    description: "Visual automation platform",
-  },
-  {
-    name: "Vapi",
-    icon: Code2,
-    description: "Voice API integration platform",
-  },
-  {
-    name: "DALL-E",
-    icon: Image,
-    description: "AI image generation by OpenAI",
-  },
-  {
-    name: "Midjourney",
-    icon: Palette,
-    description: "Advanced AI art generation",
-  },
-  {
-    name: "Stable Diffusion",
-    icon: PenTool,
-    description: "Open-source image generation model",
-  },
-  {
-    name: "ElevenLabs",
-    icon: Mic,
-    description: "AI voice synthesis platform",
-  },
+    name: "PostgreSQL",
+    icon: database,
+    description: "Connect and manage your PostgreSQL databases"
+  }
 ];
 
 export const Technologies = () => {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50" id="technologies">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-primary mb-4">
-            AI and Automation Technologies
+            We connect to all your apps
           </h2>
           <p className="text-xl text-gray-600">
-            Leveraging cutting-edge tools to power your business
+            Seamless integration with thousands of tools through APIs, custom code, and webhooks
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
-          {technologies.map((tech) => (
-            <div
-              key={tech.name}
-              className="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center justify-center gap-3"
-            >
-              <tech.icon className="w-8 h-8 text-primary" />
-              <span className="font-medium text-primary text-sm text-center">{tech.name}</span>
-              <span className="text-xs text-gray-500 text-center">{tech.description}</span>
-            </div>
-          ))}
-          <div className="p-6 bg-primary-light text-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center justify-center gap-3 cursor-pointer">
-            <Plus className="w-8 h-8" />
-            <span className="font-medium text-sm">Many More</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {technologies.map((tech, index) => {
+            const Icon = tech.icon;
+            return (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="flex items-center gap-4">
+                  <Icon className="w-8 h-8 text-primary" />
+                  <div>
+                    <h3 className="font-semibold text-lg text-primary">
+                      {tech.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm mt-1">
+                      {tech.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center">
+            <Button variant="outline" className="text-primary">
+              Many More +
+            </Button>
           </div>
         </div>
       </div>
